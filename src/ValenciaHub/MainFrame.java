@@ -18,7 +18,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.io.*;
-import java.nio.file.Files;
 
 public class MainFrame extends JFrame {
     private JTextField campo_ID;
@@ -44,6 +43,7 @@ public class MainFrame extends JFrame {
     private JRadioButton hub1RadioButton;
     private JRadioButton hub2RadioButton;
     private JRadioButton hub3RadioButton;
+    private JButton BotonExamen;
     private JButton hub1Button;
 
 
@@ -350,7 +350,32 @@ public class MainFrame extends JFrame {
             }
         });
 
+        //ACTION LISTENER DEL BOTON DEL METODO DEL EXAMEN
 
+        BotonExamen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame Nuevaventana = new JFrame();
+                Nuevaventana.setSize(600,600);
+                Nuevaventana.setVisible(true);
+                Nuevaventana.setLayout(null);
+                Nuevaventana.setTitle("METODO EXAMEN");
+                Nuevaventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+                JPanel PanelMostrarMetodo = new JPanel();
+                PanelMostrarMetodo.setSize(600,600);
+
+
+                JLabel MetodoAMostrar = new JLabel();
+                int ValorEntero = Integer.parseInt(campo_Peso.getText());
+
+                MetodoAMostrar.setText(p1.Puerto(ValorEntero,hubSelected()));
+                PanelMostrarMetodo.add(MetodoAMostrar);
+
+                Nuevaventana.add(PanelMostrarMetodo);
+
+            }
+        });
     }
     private int hubSelected(){
         int hubNumber;
